@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>World Health Organization (WHO)'s Concept of mental health</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>The World Health Organization (WHO) conceptualizes mental health as a “state of well-being in which the individual realizes his or her own abilities, can cope with the normal stresses of life, can work productively and fruitfully, and is able to make a contribution to his or her community.</h1>
+    <h2>These are the approx scores an individual should possess to be called a Mentally Healthy Person: </h2>
+    <div>
+        <input type="number" id="input1" placeholder="Enter integer 1">
+        <input type="number" id="input2" placeholder="Enter integer 2">
+        <input type="number" id="input3" placeholder="Enter integer 3">
+        <input type="number" id="input4" placeholder="Enter integer 4">
+        <input type="number" id="input5" placeholder="Enter integer 5">
+        <input type="number" id="input6" placeholder="Enter integer 6">
+        <input type="number" id="input7" placeholder="Enter integer 7">
+        <input type="number" id="input8" placeholder="Enter integer 8">
+        <input type="number" id="input9" placeholder="Enter integer 9">
+        <input type="number" id="input10" placeholder="Enter integer 10">
+        <input type="number" id="input11" placeholder="Enter integer 11">
+        <input type="number" id="input12" placeholder="Enter integer 12">
+        <button onclick="calculateSumAndPlotGraph()">Calculate Sum</button>
+        <br>
+        <button id="viewComparison" style="background-color: red;">Comparison Between 2 Graphs</button>
+    </div>
+    <div>
+        <p>Sum of Integers: <span id="sumResult">0</span></p>
+    </div>
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <script>
+         const inputValues = [2, 4, 2, 3, 1, 2, 1, 1, 2, 2, 1, 0]; // Initialize with 12 numbers
+
+        function calculateSumAndPlotGraph() {
+            const integers = [];
+            let sum = 0;
+
+            for (let i = 1; i <= 12; i++) {
+                const inputValue = document.getElementById('input' + i).value;
+                const integer = parseInt(inputValue);
+
+                if (!isNaN(integer)) {
+                    integers.push(integer);
+                    sum += integer;
+                    inputValues[i - 1] = integer;
+                }
+            }
+
+            document.getElementById('sumResult').textContent = sum;
+
+            // Plot the graph using Chart.js
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const labels = Array.from({ length: integers.length }, (_, i) => `Input ${i + 1}`);
+            const data = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Input Integers',
+            backgroundColor: integers.map((value, index) => {
+                if (index ==0) {
+                    return 'rgba(0, 128, 0, 0.2)'; // Red for values 1 to 5
+                }
+               
+                if (index == 1) {
+                    return 'rgba(139, 0, 0, 0.2)'; // Red for values 1 to 5
+                }
+
+                if (index == 2) {
+                    return 'rgba(0, 128, 0, 0.2)'; // Red for values 1 to 5
+                }
+ 
+                if (index == 3) {
+                    return 'rgba(54, 162, 235, 0.2)'; // Red for values 1 to 5
+                }
+                if (index == 4) {
+                    return 'rgba(255, 255, 153, 0.6)'; // Red for values 1 to 5
+                }
+
+                if (index == 5) {
+                    return 'rgba(0, 128, 0, 0.2)'; // Red for values 1 to 5
+                }
+                 if (index == 6) {
+                    return 'rgba(255, 255, 153, 0.6)'; // Red for values 1 to 5
+                }
+                 if (index == 7) {
+                    return 'rgba(255, 255, 153, 0.6)'; // Red for values 1 to 5
+                }
+                if (index == 8) {
+                    return 'rgba(0, 128, 0, 0.2)'; // Red for values 1 to 5
+                }
+                if (index == 9) {
+                    return 'rgba(0, 128, 0, 0.2)'; // Red for values 1 to 5
+                }
+                if (index == 10) {
+                    return 'rgba(255, 255, 153, 0.6)'; // Red for values 1 to 5
+                }
+                if (index == 11) {
+                    return 'rgba(139, 0, 0, 0.6)'; // Red for values 1 to 5
+                }
+                if (index == 12) {
+                    return 'rgba(139, 0, 0, 0.6)'; // Red for values 1 to 5
+                }
+
+                
+
+                else {
+                    return 'rgba(75, 192, 192, 0.2)'; // Default color for other values
+                }
+            }),
+            borderColor: 'rgba(75, 192, 192, 1)', // Border color for all bars
+            borderWidth: 1,
+            data: integers,
+                    },
+                ],
+            };
+
+            const config = {
+                type: 'bar',
+                data: data,
+            };
+
+            new Chart(ctx, config);
+        }
+
+        // Load previously entered values if any
+        window.onload = function () {
+            for (let i = 0; i < inputValues.length; i++) {
+                if (inputValues[i] !== undefined) {
+                    document.getElementById('input' + (i + 1)).value = inputValues[i];
+                }
+            }
+        };
+
+
+        var viewComparisonButton = document.getElementById("viewComparison");
+        viewComparisonButton.addEventListener("click", function () {
+            var userResponsesString = localStorage.getItem("userResponses");
+            var userResponses = JSON.parse(userResponsesString);
+
+            if (userResponsesString) {
+
+            // Store the user responses in localStorage
+            localStorage.setItem("userResponses", JSON.stringify(userResponses));
+
+            // Navigate to another HTML page
+            window.location.href = "{{ url_for('comparison') }}";
+            }
+            else{
+                console.log("User Responses not found.");
+        
+            }
+    
+});
+
+
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mental Health Queries</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: url('/static/I12.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 250dvh;
+            top: 100px;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #19253b59;
+            box-shadow: 0 0 36px 0;
+            backdrop-filter: blur(3px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 80%;
+            margin: auto;
+            padding: 1.2rem 0rem;
+        }
+
+        div {
+            margin: 10px;
+            padding: 10px;
+            text-align: justify;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .logo p {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            padding: 0;
+            background-color: transparent;
+            overflow: hidden;
+        }
+
+        li {
+            padding: 0rem 1.1rem;
+            float: left;
+        }
+
+        li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: .7px;
+        }
+
+        li a:hover {
+            color: #91b2ff;
+            transition: all .3s ease-in-out;
+        }
+
+        .button {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .button input {
+            font-weight: 500;
+            color: #fff;
+            border: 1px solid #fff;
+            background-color: transparent;
+            padding: .5rem 1rem;
+            border-radius: 20%;
+            cursor: pointer;
+        }
+
+        .button input:hover {
+            background-color: #fff;
+            color: #152939;
+            transition: all .3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <center><h1>Mental Health Scores</h1></center>
+        </div>
+    </nav>
+    <div>
+        <form id="question1-form">
+            <label for="slider1">1. What's your stress level?</label>
+            <input type="range" id="slider1" name="slider1" min="0" max="5" step="1" value="2">
+            <span id="sliderEmoji1">😎</span>
+            <p>Selected Value: <span id="sliderValue1">2</span></p>
+            <button type="button" id="submit1" style="background-color: red;">Submit</button>
+        </form>
+    
+        <form id="question2-form">
+            <label for="slider2">2. How well do you sleep at night?</label>
+            <input type="range" id="slider2" name="slider2" min="0" max="5" step="1" value="2">
+            <span id="sliderEmoji2">😎</span>
+            <p>Selected Value: <span id="sliderValue2">2</span></p>
+            <button type="button" id="submit2" style="background-color: red;">Submit</button>
+        </form>
+    
+        <form id="question3-form">
+            <label for="slider3">3. Do you worry too much about different things?</label>
+            <input type="range" id="slider3" name="slider3" min="0" max="5" step="1" value="2">
+            <span id="sliderEmoji3">😎</span>
+            <p>Selected Value: <span id="sliderValue3">2</span></p>
+            <button type="button" id="submit3" style="background-color: red;">Submit</button>
+        </form>
+    
+        <form id="question4-form">
+            <label for="slider4">4. What's your interest or pleasure in doing general things?</label>
+            <input type="range" id="slider4" name="slider4" min="0" max="5" step="1" value="2">
+            <span id="sliderEmoji4">😎</span>
+            <p>Selected Value: <span id="sliderValue4">2</span></p>
+            <button type="button" id="submit4" style="background-color: red;">Submit</button>
+        </form>
+    
+        <form id="question5-form">
+            <label for="slider5">5. Getting easily annoyed or irritable?</label>
+            <input type="range" id="slider5" name="slider5" min="0" max="5" step="1" value="2">
+            <span id="sliderEmoji5">😎</span>
+            <p>Selected Value: <span id="sliderValue5">2</span></p>
+            <button type="button" id="submit5" style="background-color: red;">Submit</button>
+        </form>
+    
+        <form id="question6-form">
+            <label for="slider6">6. Do you find trouble relaxing?</label>
+            <input type="range" id="slider6" name="slider6" min="0" max="5" step="1" value="2">
+            <span id="sliderEmoji6">😎</span>
+            <p>Selected Value: <span id="sliderValue6">2</span></p>
+            <button type="button" id="submit6" style="background-color: red;">Submit</button>
+        </form>
+    
+        <form id="question7-form">
+            <label for="slider7">7. How frequently do you feel alone or lonely?</label>
+            <input type="range" id="slider7" name="slider7" min="0" max="5" step="1" value="2">
+            <span id="sliderEmoji7">😎</span>
+            <p>Selected Value: <span id="sliderValue7">2</span></p>
+            <button type="button" id="submit7" style="background-color: red;">Submit</button>
+        </form>
+    
+        <form id="question8-form">
+            <label for="slider8">8. Feeling bad about yourself or that you are a failure or have let yourself or your family
+                down?</label>
+            <input type="range" id="slider8" name="slider8" min="0" max="5" step="1" value="2">
+            <span id="sliderEmoji8">😎</span>
+            <p>Selected Value: <span id="sliderValue8">2</span></p>
+            <button type="button" id="submit8" style="background-color: red;">Submit</button>
+        </form>
+    
+        <form id="question9-form">
+            <label for="slider9">9. Trouble concentrating on things such as reading the newspaper or watching
+                television?</label>
+            <input type="range" id="slider9" name="slider9" min="0" max="5" step="1" value="2">
+            <span id="sliderEmoji9">😎</span>
+            <p>Selected Value: <span id="sliderValue9">2</span></p>
+            <button type="button" id="submit9" style="background-color: red;">Submit</button>
+        </form>
+    
+        <form id="question10-form">
+            <label for="slider10">10. Do you feel afraid as if something awful might happen?</label>
+            <input type="range" id="slider10" name="slider10" min="0" max="5" step="1" value="2">
+            <span id="sliderEmoji10">😎</span>
+            <p>Selected Value: <span id="sliderValue10">2</span></p>
+            <button type="button" id="submit10" style="background-color: red;">Submit</button>
+        </form>
+    
+        <form id="question11-form">
+            <label for="slider11">11. Thoughts that you would be better off dead, or thoughts of hurting yourself in some
+                way?</label>
+            <input type="range" id="slider11" name="slider11" min="0" max="5" step="1" value="2">
+            <span id="sliderEmoji11">😎</span>
+            <p>Selected Value: <span id="sliderValue11">2</span></p>
+            <button type="button" id="submit11" style="background-color: red;">Submit</button>
+        </form>
+    
+        <form id="question12-form">
+            <label for="slider12">12. How often did you consider attempting suicide?</label>
+            <input type="range" id="slider12" name="slider12" min="0" max="5" step="1" value="2">
+            <span id="sliderEmoji12">😎</span>
+            <p>Selected Value: <span id="sliderValue12">2</span></p>
+            <button type="button" id="submit12" style="background-color: red;">Submit</button>
+        </form>
+
+        <button id="submitAll" style="background-color: red;">Submit All Answers</button>
+
+        <!-- Chart canvas -->
+        <canvas id="myChart"></canvas>
+
+        <button id="viewComparison" style="background-color: red;">WHO Answers</button>
+
+    </div>
+
+    <script>
+        // Initialize an array to store the values of each question
+        var userResponses = new Array(12).fill(2);
+
+        function changeButtonColor(buttonId, color) {
+            var button = document.getElementById(buttonId);
+            button.style.backgroundColor = color;
+        }
+
+        for (var i = 1; i <= 12; i++) {
+            (function (i) {
+                var submitButton = document.getElementById("submit" + i);
+                var sliderValue = document.getElementById("sliderValue" + i);
+                var slider = document.getElementById("slider" + i);
+
+                submitButton.addEventListener("click", function () {
+                    var selectedValue = slider.value;
+                    sliderValue.textContent = selectedValue;
+                    userResponses[i - 1] = parseInt(selectedValue);
+
+                    changeButtonColor("submit" + i, "green");
+
+                    if (userResponses.every(function (response) {
+                        return response !== 2;
+                    })) {
+                        changeButtonColor("submitAll", "green");
+                    }
+                });
+            })(i);
+        }
+
+        // Loop to handle changing emojis for each question
+        for (var i = 1; i <= 12; i++) {
+            (function (i) {
+                var slider = document.getElementById("slider" + i);
+                var sliderValue = document.getElementById("sliderValue" + i);
+                var sliderEmoji = document.getElementById("sliderEmoji" + i);
+
+                slider.addEventListener("input", function () {
+                    var value = this.value;
+                    var questionNumber = this.id.replace("slider", "");
+                    sliderValue.textContent = value;
+
+                    // Change emoji based on the value
+                    if (value == 0) {
+                        sliderEmoji.textContent = "😎";
+                    } else if (value == 1) {
+                        sliderEmoji.textContent = "😇";
+                    } else if (value == 2) {
+                        sliderEmoji.textContent = "😦";
+                    } else if (value == 3) {
+                        sliderEmoji.textContent = "🤕";
+                    } else if (value == 4) {
+                        sliderEmoji.textContent = "😵";
+                    } else if (value == 5) {
+                        sliderEmoji.textContent = "🫠";
+                    }
+                });
+            })(i);
+        }
+
+        // Loop to handle each question form
+        for (var i = 1; i <= 12; i++) {
+            (function (i) {
+                var submitButton = document.getElementById("submit" + i);
+                var sliderValue = document.getElementById("sliderValue" + i);
+                var slider = document.getElementById("slider" + i);
+
+                // Event listener for the "Submit" button of each question
+                submitButton.addEventListener("click", function () {
+                    var selectedValue = slider.value;
+                    sliderValue.textContent = selectedValue;
+                    // Store the selected value in the userResponses array
+                    userResponses[i - 1] = parseInt(selectedValue);
+                });
+            })(i);
+        }
+
+        // JavaScript to handle submission of all answers
+        var submitAllButton = document.getElementById("submitAll");
+
+        submitAllButton.addEventListener("click", function () {
+            // Create an array of colors for each bar based on values
+            var barColors = userResponses.map(function (value) {
+                if (value == 0) {
+                    return "rgba(75, 192, 192, 0.2)";
+                } else if (value == 1) {
+                    return "rgba(255, 255, 153, 0.6)";
+                } else if (value == 2) {
+                    return "rgba(0, 128, 0, 0.2)";
+                } else if (value == 3) {
+                    return "rgba(54, 162, 235, 0.2)";
+                } else if (value == 4) {
+                    return "rgba(139, 0, 0, 0.2)";
+                } else if (value == 5) {
+                    return "rgba(139, 0, 0, 0.6)";
+                }
+            });
+
+            // Create a bar chart using Chart.js to display the user responses with different colors
+            var ctx = document.getElementById("myChart").getContext("2d");
+
+            var myChart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: [
+                        "Question 1", "Question 2", "Question 3", "Question 4",
+                        "Question 5", "Question 6", "Question 7", "Question 8",
+                        "Question 9", "Question 10", "Question 11", "Question 12"
+                    ],
+                    datasets: [{
+                        label: "User Responses",
+                        data: userResponses,
+                        backgroundColor: barColors, // Assign different colors based on values
+                        borderColor: barColors, // Border color same as background color for filled bars
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+
+        var submitAllButton = document.getElementById("submitAll");
+
+        submitAllButton.addEventListener("click", function () {
+            // Change the color of the "Submit All Answers" button to green when clicked
+            submitAllButton.style.backgroundColor = "green";
+
+            // Calculate the sum of all user responses
+            //var sum = userResponses.reduce((acc, currentValue) => acc + parseInt(currentValue), 0);
+
+            // Display the sum
+           //alert("Sum of all responses: " + sum);
+
+            //for(var i=1;i<=50000;i++)
+            // Store the user responses in localStorage
+            //localStorage.setItem("userResponses", JSON.stringify(userResponses));
+
+            // Navigate to another HTML page
+            //window.location.href = "demo1.html";
+        });
+
+
+    var viewComparisonButton = document.getElementById("viewComparison");
+
+    viewComparisonButton.addEventListener("click", function () {
+        // Store the user responses in localStorage
+            localStorage.setItem("userResponses", JSON.stringify(userResponses));
+
+            // Navigate to another HTML page
+            window.location.href = "{{ url_for('who') }}";
+        
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect to Spotify Playlists</title>
+    
+    <style>
+        body {
+            min-height: 100vh;
+            width: 100%;
+            background: url('/static/I15.jpg')no-repeat;
+            background-position: center;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .playlist-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #0070f3;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #004080;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="playlist-container">
+        <h1>Choose a Spotify Playlist:</h1>
+        
+        <ul>
+            <li><button onclick="window.open('https://open.spotify.com/playlist/4gM4Ktd6Q5VOueogtNIXEI', '_blank')">Playlist 1: Decendants of the Sun OST</button></li>
+            <li><button onclick="window.open('https://open.spotify.com/playlist/37i9dQZF1DX1uHCeFHcn8X', '_blank')">Playlist 2: Soft 10s</button></li>
+            <li><button onclick="window.open('https://open.spotify.com/playlist/7vq57TiBTpm5IMfiWs5PBh', '_blank')">Playlist 3: Korean Top OST (2018-2023)</button></li>
+            <li><button onclick="window.open('https://open.spotify.com/playlist/37i9dQZF1DZ06evO3OFntE', '_blank')">Playlist 4: This is Lee Hong GI</button></li>
+        </ul>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!---Log-in-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-image: url('2.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100dvh;
+            top: 100px;
+        }
+
+        header {
+            background-color: #19253b59;
+            box-shadow: 0 0 36px 0;
+            backdrop-filter: blur(3px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 80%;
+            margin: auto;
+            padding: 1.2rem 0rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .logo p {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            padding: 0;
+            background-color: transparent;
+            overflow: hidden;
+        }
+
+        li {
+            padding: 0rem 1.1rem;
+            float: left;
+        }
+
+        li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: .7px;
+        }
+
+        li a:hover {
+            color: #91b2ff;
+            transition: all .3s ease-in-out;
+        }
+
+        .button {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .button input {
+            font-weight: 500;
+            color: #fff;
+            border: 1px solid #fff;
+            background-color: transparent;
+            padding: .5rem 1rem;
+            border-radius: 20%;
+            cursor: pointer;
+        }
+
+        .button input:hover {
+            background-color: #fff;
+            color: #152939;
+            transition: all .3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <p>Mental Health Detection Using Vitual Assisstant</p>
+            </div>
+            <ul>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="cont.html">Contact</a></li>
+            </ul>
+            <div class="button">
+                
+                <input type=button onClick="location.href='sign.html'" value="Sign In">
+                <input type=button onClick="location.href='login.html'" value='Log In'>
+                
+            </div>
+        </nav>
+    </header>
+    
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+</style>
+</html>

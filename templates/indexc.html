@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .user-box, .bot-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .user-box {
+            background-color: #e6f7ff;
+        }
+
+        .bot-box {
+            background-color: #f2f2f2;
+        }
+
+        /* Add more styles as needed */
+    </style>
+</head>
+<body>
+    <h1>Mental Health Chatbot</h1>
+    
+    <form action="/get_response" method="post">
+        <label for="user_input">Your question:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <button type="submit">Ask</button>
+    </form>
+    <br><br>
+    <div class="container">
+        <div class="user-box">
+            <h3>User Input:</h3>
+            <p>{{ user_input }}</p>
+        </div>
+        
+        <div class="bot-box">
+            <h3>Bot Response(s):</h3>
+            <ul>
+                {% for response in bot_responses %}
+                <li>{{ response }}</li><br>
+                {% endfor %}
+                </ul>
+        </div>
+    </div>
+</body>
+</html>
